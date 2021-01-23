@@ -21,18 +21,22 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     OnLongClickListener longClickListener;
 
     public ItemsAdapter(List<String> items, OnLongClickListener longClickListener){
+
         this.items = items;
         this.longClickListener = longClickListener;
+
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         // Use layout inflator to inflate a view
         View toDoView = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_expandable_list_item_1, parent, false);
 
         // Wrap it inside a View Holder and return it
         return new ViewHolder(toDoView);
+
     }
 
     @Override
@@ -53,7 +57,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     }
 
     // Container to provide easy access to views that represent each row of the list
-
     class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView tvItem;
@@ -75,7 +78,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                 }
             });
         }
-    }
 
+    }
 
 }

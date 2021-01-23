@@ -4,9 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-//import android.os.FileUtils;
 import org.apache.commons.io.FileUtils;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 saveItems();
 
             }
+
         };
 
         itemsAdapter = new ItemsAdapter(items, onLongClickListener);
@@ -63,22 +64,25 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
                 String toDoItem = etItem.getText().toString();
 
-                // Adds item to model
+                // Adds item to the model
                 items.add(toDoItem);
 
-                // Notifies adapter that an item is inserted
+                // Notifies the adapter that an item is inserted
                 itemsAdapter.notifyItemInserted(items.size() - 1);
 
-                // Clear the edit text once we've submitted
+                // Clears the edit text once we've submitted
                 etItem.setText("");
 
                 // Displays a message to the user once the item is added
                 Toast.makeText(getApplicationContext(),"Item was added", Toast.LENGTH_SHORT).show();
                 saveItems();
             }
+
         });
+
     }
 
     // Returns the file that stores the list of To Do items
@@ -88,22 +92,30 @@ public class MainActivity extends AppCompatActivity {
 
     // Loads the To Do items by reading every line of the data file
     private void loadItems(){
+
         try{
             items = new ArrayList<>(FileUtils.readLines(getDataFile(), Charset.defaultCharset()));
         }
         catch (IOException e){
+
             Log.e("MainActivity", "Error reading items", e);
             items = new ArrayList<>();
+
         }
+
     }
 
     // Saves items by writing them into the data file
     private void saveItems(){
+
         try{
             FileUtils.writeLines(getDataFile(), items);
         }
         catch (IOException e){
             Log.e("MainActivity", "Error writing items", e);
         }
+
+
     }
+
 }
