@@ -33,7 +33,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
-- Importing the FileUtils class which is used for readLines() and writeLines() method 
+- Importing the FileUtils class which is used for readLines() and writeLines() methods
 
 ## License
 
